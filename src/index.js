@@ -5,6 +5,8 @@ const { schema, resolvers } = require('./graphql')
 
 const app = express()
 
+require('./database')
+
 app.use('/graphql', graphqlHTTP({
     schema,
     rootValue: resolvers,
