@@ -1,6 +1,9 @@
 const Sequelize = require('sequelize')
+
 const dbConfig = require('../config/database')
 
-const connection = new Sequelize(dbConfig)
+const sequelize = new Sequelize(dbConfig)
 
-module.exports = connection
+const syncModels = (async () => await sequelize.sync())()
+
+module.exports = sequelize
