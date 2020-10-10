@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize')
 const bcrypt = require('bcryptjs')
 
 const sequelize = require('../database')
+const Post = require('./Post')
 
 const User = sequelize.define('user', {
     email: {
@@ -23,5 +24,8 @@ const User = sequelize.define('user', {
         }
     }
 })
+
+User.hasMany(Post)
+Post.belongsTo(User)
 
 module.exports = User
