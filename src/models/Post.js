@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 
 const sequelize = require('../database')
-const User = require('./User')
+const Like = require('./Like')
 
 const Post = sequelize.define('post', {
     content: {
@@ -9,5 +9,8 @@ const Post = sequelize.define('post', {
         allowNull: false
     }
 })
+
+Post.hasMany(Like)
+Like.belongsTo(Post)
 
 module.exports = Post   
